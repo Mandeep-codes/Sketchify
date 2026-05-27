@@ -1,0 +1,48 @@
+{
+  "expo": {
+    "icon": "./assets/icon.png",
+    "android": {
+      "package": "com.sketchtoreeal_x7k2.runable",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#000000"
+      },
+      "edgeToEdgeEnabled": true
+    },
+    "extra": {
+      "apiUrl": "https://n6fc33f17vf44uzsllglj-preview-4200.runable.site/"
+    },
+    "ios": {
+      "bundleIdentifier": "com.sketchtoreal_x7k2.runable",
+      "supportsTablet": true
+    },
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#000000"
+    },
+    "name": "SketchToReal",
+    "slug": "sketchtoreal",
+    "version": "1.0.0",
+    "scheme": "sketchtoreal",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "sdkVersion": "54.0.0",
+    "newArchEnabled": false,
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "Allow SketchToReal to save images to your photos.",
+          "savePhotosPermission": "Allow SketchToReal to save images to your photos.",
+          "isAccessMediaLocationEnabled": true
+        }
+      ]
+    ]
+  }
+}

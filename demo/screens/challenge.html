@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 393px; height: 852px; overflow: hidden;
+    background: #0A0A0A;
+    font-family: -apple-system, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+    color: #fff;
+  }
+
+  .statusbar {
+    height: 44px; display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 20px 0; position: relative; z-index: 10;
+  }
+  .time { font-size: 15px; font-weight: 600; }
+  .icons { font-size: 12px; color: rgba(255,255,255,0.9); }
+
+  /* Hero */
+  .hero {
+    position: relative; height: 200px; overflow: hidden;
+    background: #111;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background-image: url('../challenge-paint-bg.png');
+    background-size: cover; background-position: center;
+    opacity: 0.45;
+  }
+  .hero-grad {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), #0A0A0A 100%);
+  }
+  .hero-content {
+    position: absolute; bottom: 18px; left: 22px; right: 22px;
+  }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(140,179,58,0.15); border-radius: 20px;
+    padding: 4px 12px; margin-bottom: 8px;
+    border: 1px solid rgba(140,179,58,0.3);
+  }
+  .eyebrow-dot { width: 6px; height: 6px; border-radius: 50%; background: #8CB33A; }
+  .eyebrow-text { font-size: 11px; font-weight: 700; color: #8CB33A; letter-spacing: 1.5px; text-transform: uppercase; }
+  .hero-title { font-size: 32px; font-weight: 900; letter-spacing: -1px; line-height: 1.05; }
+  .hero-title span { color: #8CB33A; }
+
+  /* challenge card */
+  .card {
+    margin: 0 16px 16px;
+    background: rgba(255,255,255,0.04); border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.08);
+    overflow: hidden;
+  }
+  .card-accent { height: 3px; background: linear-gradient(to right, #8CB33A, #6A9A2A); }
+  .card-body { padding: 16px; }
+  .card-label { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.4); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px; }
+  .prompt { font-size: 20px; font-weight: 800; margin-bottom: 4px; }
+  .prompt-sub { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 12px; }
+  .styles-row { display: flex; gap: 6px; flex-wrap: wrap; }
+  .style-chip {
+    padding: 5px 12px; border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.15);
+    font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.7);
+  }
+  .style-chip.active { background: rgba(140,179,58,0.15); border-color: #8CB33A; color: #8CB33A; }
+
+  /* timer section */
+  .timer-section { padding: 0 16px 16px; }
+  .section-title { font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; }
+  .timer-row { display: flex; gap: 8px; }
+  .timer-btn {
+    flex: 1; height: 64px; border-radius: 14px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+  }
+  .timer-btn.active {
+    background: linear-gradient(135deg, rgba(140,179,58,0.25), rgba(106,154,42,0.15));
+    border-color: #8CB33A;
+  }
+  .timer-num { font-size: 22px; font-weight: 900; }
+  .timer-num.active { color: #8CB33A; }
+  .timer-label { font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1px; }
+
+  /* start button */
+  .start-btn {
+    margin: 0 16px;
+    height: 58px; border-radius: 16px;
+    background: #8CB33A;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: 800; color: #0A0A0A; letter-spacing: 0.3px;
+  }
+</style>
+</head>
+<body>
+  <div class="statusbar">
+    <span class="time">9:41</span>
+    <span class="icons">●●● WiFi 87%</span>
+  </div>
+
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grad"></div>
+    <div class="hero-content">
+      <div class="eyebrow">
+        <div class="eyebrow-dot"></div>
+        <span class="eyebrow-text">Speed Draw</span>
+      </div>
+      <div class="hero-title">Race the<br><span>clock.</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-accent"></div>
+    <div class="card-body">
+      <div class="card-label">Today's prompt</div>
+      <div class="prompt">Futuristic City</div>
+      <div class="prompt-sub">Draw a skyline from the future</div>
+      <div class="styles-row">
+        <div class="style-chip active">Cyberpunk ✓</div>
+        <div class="style-chip">Anime</div>
+        <div class="style-chip">Realistic</div>
+        <div class="style-chip">Oil Paint</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="timer-section">
+    <div class="section-title">Set your timer</div>
+    <div class="timer-row">
+      <div class="timer-btn">
+        <div class="timer-num">30</div>
+        <div class="timer-label">sec</div>
+      </div>
+      <div class="timer-btn">
+        <div class="timer-num">60</div>
+        <div class="timer-label">sec</div>
+      </div>
+      <div class="timer-btn active">
+        <div class="timer-num active">90</div>
+        <div class="timer-label">sec</div>
+      </div>
+      <div class="timer-btn">
+        <div class="timer-num">120</div>
+        <div class="timer-label">sec</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="start-btn">Start Challenge</div>
+</body>
+</html>

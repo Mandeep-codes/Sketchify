@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 393px; height: 852px; overflow: hidden;
+    background: #0A0A0A;
+    font-family: -apple-system, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+    color: #fff;
+  }
+
+  .statusbar {
+    height: 44px; display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 20px 0; position: relative; z-index: 10;
+  }
+  .time { font-size: 15px; font-weight: 600; }
+  .icons { font-size: 12px; color: rgba(255,255,255,0.9); }
+
+  /* header bg */
+  .header-bg {
+    height: 200px; position: relative; overflow: hidden;
+    background: #111;
+    margin-top: -44px; padding-top: 44px;
+  }
+  .header-bg-img {
+    position: absolute; inset: 0;
+    background-image: url('../profile-header-bg.png');
+    background-size: cover; background-position: center top;
+    opacity: 0.5;
+  }
+  .header-bg-grad {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, #0A0A0A 100%);
+  }
+  .header-content {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 0 20px 16px;
+    display: flex; align-items: flex-end; gap: 14px;
+  }
+  .avatar {
+    width: 68px; height: 68px; border-radius: 50%;
+    background: linear-gradient(135deg, #8CB33A, #5A8A1A);
+    border: 3px solid #0A0A0A;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 30px; flex-shrink: 0;
+  }
+  .profile-info { flex: 1; }
+  .profile-name { font-size: 20px; font-weight: 800; }
+  .profile-tag { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+  .edit-btn {
+    padding: 7px 14px; border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.2);
+    font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.8);
+    background: rgba(255,255,255,0.05);
+  }
+
+  /* stats */
+  .stats {
+    display: flex; margin: 0 16px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 16px; border: 1px solid rgba(255,255,255,0.07);
+    overflow: hidden;
+  }
+  .stat { flex: 1; padding: 14px 10px; text-align: center; }
+  .stat + .stat { border-left: 1px solid rgba(255,255,255,0.07); }
+  .stat-num { font-size: 20px; font-weight: 900; color: #8CB33A; }
+  .stat-label { font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+
+  /* section */
+  .section { padding: 18px 20px 8px; font-size: 16px; font-weight: 800; }
+
+  /* badges */
+  .badges { display: flex; gap: 8px; padding: 0 16px; flex-wrap: wrap; }
+  .badge {
+    width: 72px; display: flex; flex-direction: column; align-items: center; gap: 6px;
+    padding: 12px 6px;
+    background: rgba(255,255,255,0.04); border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .badge.earned { border-color: rgba(140,179,58,0.3); background: rgba(140,179,58,0.08); }
+  .badge-icon { font-size: 24px; }
+  .badge-name { font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.5); text-align: center; }
+  .badge.earned .badge-name { color: rgba(140,179,58,0.9); }
+
+  /* activity bar */
+  .activity { padding: 0 16px; display: flex; gap: 3px; align-items: flex-end; height: 50px; }
+  .bar {
+    flex: 1; border-radius: 3px;
+    background: rgba(140,179,58,0.3);
+  }
+  .bar.active { background: #8CB33A; }
+</style>
+</head>
+<body>
+  <div class="header-bg">
+    <div class="header-bg-img"></div>
+    <div class="header-bg-grad"></div>
+    <div class="statusbar" style="position:absolute;top:0;left:0;right:0;">
+      <span class="time">9:41</span>
+      <span class="icons">●●● WiFi 87%</span>
+    </div>
+    <div class="header-content">
+      <div class="avatar">✏</div>
+      <div class="profile-info">
+        <div class="profile-name">Artist</div>
+        <div class="profile-tag">Sketching the world</div>
+      </div>
+      <div class="edit-btn">Edit</div>
+    </div>
+  </div>
+
+  <!-- stats -->
+  <div class="stats" style="margin-top: 12px;">
+    <div class="stat">
+      <div class="stat-num">24</div>
+      <div class="stat-label">Created</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">7</div>
+      <div class="stat-label">Streak</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Challenges</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">142</div>
+      <div class="stat-label">XP</div>
+    </div>
+  </div>
+
+  <!-- badges -->
+  <div class="section">Badges</div>
+  <div class="badges">
+    <div class="badge earned">
+      <div class="badge-icon">🎨</div>
+      <div class="badge-name">First Draw</div>
+    </div>
+    <div class="badge earned">
+      <div class="badge-icon">🔥</div>
+      <div class="badge-name">7 Streak</div>
+    </div>
+    <div class="badge earned">
+      <div class="badge-icon">⚡</div>
+      <div class="badge-name">Speed Draw</div>
+    </div>
+    <div class="badge">
+      <div class="badge-icon">🔒</div>
+      <div class="badge-name">50 Creates</div>
+    </div>
+    <div class="badge">
+      <div class="badge-icon">🔒</div>
+      <div class="badge-name">Master</div>
+    </div>
+  </div>
+
+  <!-- activity -->
+  <div class="section">7-Day Activity</div>
+  <div class="activity">
+    <div class="bar" style="height:30%"></div>
+    <div class="bar" style="height:50%"></div>
+    <div class="bar" style="height:40%"></div>
+    <div class="bar active" style="height:80%"></div>
+    <div class="bar" style="height:60%"></div>
+    <div class="bar active" style="height:100%"></div>
+    <div class="bar active" style="height:90%"></div>
+  </div>
+</body>
+</html>

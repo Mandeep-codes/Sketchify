@@ -42,24 +42,4 @@ packages/
     vite.config.ts           Vite config
 ```
 
-## Environment Variables
 
-Secrets and credentials live in `.env` at the project root (gitignored). Vite's `loadEnv` loads them into `process.env` at dev/build time (configured in `packages/web/vite.config.ts`). In API code (Hono), use `process.env.YOUR_VAR`. In browser code, only `VITE_`-prefixed vars are exposed via `import.meta.env.VITE_YOUR_VAR`. Drizzle scripts use `bun --env-file=../../.env` to load env vars directly.
-
-## Desktop UI
-
-The desktop app has no separate renderer by default. It loads the web app from `packages/web`; desktop-specific UI should live in `packages/web/src/web/` and be gated with `useDesktop()` / `window.electronAPI`. Keep `packages/desktop` for Electron window setup, menus/tray/shortcuts, IPC handlers, native OS APIs, and packaging. Only add a separate desktop renderer when the product intentionally needs a different desktop-only UI architecture.
-
-## Servers
-
-Dev servers are started and managed automatically — no need to run them manually.
-
-## Database
-
-```sh
-cd packages/web
-bun run db:push        # Push schema to database
-bun run db:generate    # Generate migration files
-bun run db:migrate     # Run migrations
-bun run db:studio      # Open Drizzle Studio
-```
